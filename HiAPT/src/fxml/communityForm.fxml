@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" style="-fx-background-color: fcf0d5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.communityFormController">
+   <center>
+      <VBox prefHeight="513.0" prefWidth="375.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="combo" onAction="#useHandleChange" prefHeight="30.0" prefWidth="200.0" promptText="게시판 선택">
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor></ComboBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="61.0" text="내용 검색" textFill="#542a0a">
+                     <font>
+                        <Font name="HCR Batang Bold" size="14.5" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="searchFld" prefHeight="30.0" prefWidth="160.0" style="-fx-border-color: #6b4418; -fx-border-width: 0 0 3 0; -fx-background-color: fcf0d5;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <font>
+                        <Font name="HCR Batang Bold" size="14.0" />
+                     </font></TextField>
+                  <ImageView fx:id="search" fitHeight="41.0" fitWidth="32.0" onMouseClicked="#searchProc" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/search.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="152.0" prefWidth="375.0">
+               <children>
+                  <TableView fx:id="tableView" onMouseClicked="#tableClick" prefHeight="273.0" prefWidth="376.0">
+                    <columns>
+                      <TableColumn fx:id="numCol" prefWidth="40.0" text="No" />
+                        <TableColumn fx:id="titleCol" prefWidth="82.0" text="제목" />
+                      <TableColumn fx:id="contentCol" prefWidth="191.0" text="내용" />
+                        <TableColumn fx:id="writeTimeCol" prefWidth="62.0" text="작성일" />
+                    </columns>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TableView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="78.0" prefWidth="375.0" spacing="10.0">
+               <children>
+                  <Label lineSpacing="20.0" text="제 목" textFill="#542a0a">
+                     <font>
+                        <Font name="HCR Batang Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="titleFld" prefHeight="32.0" prefWidth="226.0" style="-fx-border-color: #6b4418; -fx-border-width: 0 0 2 0; -fx-background-color: fcf0d5;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <font>
+                        <Font name="HCR Batang Bold" size="14.0" />
+                     </font></TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="204.0" prefWidth="375.0">
+               <children>
+                  <TextArea fx:id="contentFld" prefHeight="173.0" prefWidth="284.0" style="-fx-border-color: #6b4418; -fx-border-width: 2px; -fx-background-color: fcf0d5; -fx-border-radius: 10px;" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <font>
+                        <Font name="HCR Batang Bold" size="14.0" />
+                     </font></TextArea>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="375.0">
+               <children>
+                  <Label fx:id="writeTime">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="45.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

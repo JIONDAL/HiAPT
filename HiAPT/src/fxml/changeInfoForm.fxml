@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" style="-fx-background-color: fcf0d5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.changeInfoFormController">
+   <children>
+      <VBox prefHeight="661.0" prefWidth="375.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="154.0" prefWidth="375.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="0.0" text="회원 정보 수정" textFill="#f26900">
+                     <font>
+                        <Font name="HCR Batang Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="90.0" prefWidth="375.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="0.0" prefWidth="110.0" text="이름 수정" textFill="#542a0a">
+                     <font>
+                        <Font name="HCR Batang Bold" size="15.5" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameFld" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: fcf0d5; -fx-border-width: 0 0 2 0; -fx-border-color: #6b4418; -fx-border-radius: 5px;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <font>
+                        <Font name="HCR Batang Bold" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="90.0" prefWidth="375.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="0.0" prefWidth="110.0" text="휴대폰번호 수정" textFill="#542a0a">
+                     <font>
+                        <Font name="HCR Batang Bold" size="15.5" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="phoneFld" prefHeight="40.0" prefWidth="180.0" promptText="하이픈(-)을 사용하여 입력하세요" style="-fx-background-color: fcf0d5; -fx-border-width: 0 0 2 0; -fx-border-color: #6b4418; -fx-border-radius: 5px;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <font>
+                        <Font name="HCR Batang Bold" size="12.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="90.0" prefWidth="375.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="0.0" prefWidth="110.0" text="비밀번호 수정" textFill="#542a0a">
+                     <font>
+                        <Font name="HCR Batang Bold" size="15.5" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="pwFld" prefHeight="40.0" prefWidth="180.0" promptText="10자리 이하" style="-fx-background-color: fcf0d5; -fx-border-width: 0 0 2 0; -fx-border-color: #6b4418; -fx-border-radius: 5px;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <font>
+                        <Font name="HCR Batang Bold" size="12.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="90.0" prefWidth="375.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="0.0" prefWidth="110.0" text="비밀번호 확인" textFill="#542a0a">
+                     <font>
+                        <Font name="HCR Batang Bold" size="15.5" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="confirmFld" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: fcf0d5; -fx-border-width: 0 0 2 0; -fx-border-color: #6b4418; -fx-border-radius: 5px;">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <font>
+                        <Font name="HCR Batang Bold" size="14.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="59.0" prefWidth="375.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#changeProc" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 10px; -fx-background-color: fcf0d5; -fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px;" text="수정" textFill="#6b4418">
+                     <font>
+                        <Font name="HCR Batang Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#cancleProc" prefHeight="40.0" prefWidth="120.0" style="-fx-background-radius: 10px; -fx-background-color: fcf0d5; -fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px;" text="다시 입력" textFill="#6b4418">
+                     <font>
+                        <Font name="HCR Batang Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="40.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

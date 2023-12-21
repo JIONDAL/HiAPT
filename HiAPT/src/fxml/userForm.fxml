@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" style="-fx-background-color: fcf0d5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.userFormController">
+   <top>
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="402.0" prefWidth="369.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="150.0" prefWidth="369.0">
+                     <children>
+                        <Label fx:id="id" alignment="CENTER" textFill="#542a0a">
+                           <font>
+                              <Font name="HCR Batang Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="23.0" prefWidth="203.0" text="님, 좋은 하루 보내세요" textFill="#f26900">
+                           <font>
+                              <Font name="HCR Batang Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="125.0" prefWidth="369.0">
+                     <children>
+                        <ImageView fitHeight="194.0" fitWidth="222.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/클로버.png" />
+                           </image>
+                           <effect>
+                              <Blend mode="HARD_LIGHT">
+                                 <topInput>
+                                    <Reflection />
+                                 </topInput>
+                              </Blend>
+                           </effect>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="342.0" prefWidth="375.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="184.0" prefWidth="375.0">
+               <children>
+                  <Button fx:id="myPageBtn" graphicTextGap="0.0" mnemonicParsing="false" onAction="#myPageProc" prefHeight="50.0" prefWidth="230.0" style="-fx-background-radius: 15px; -fx-background-color: fcf0d5; -fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px;" text="마이페이지" textFill="#6b4418">
+                     <font>
+                        <Font name="HCR Batang Bold" size="30.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="170.0" prefWidth="375.0">
+               <children>
+                  <Button fx:id="communityBtn" mnemonicParsing="false" onAction="#communityProc" prefHeight="50.0" prefWidth="230.0" style="-fx-background-radius: 15px; -fx-background-color: fcf0d5; -fx-border-color: #6b4418; -fx-border-radius: 30px; -fx-border-width: 2px;" text="커뮤니티" textFill="#6b4418">
+                     <font>
+                        <Font name="HCR Batang Bold" size="30.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
