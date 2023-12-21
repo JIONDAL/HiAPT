@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" style="-fx-background-color: fcf0d5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.activityFormController">
+   <children>
+      <VBox prefHeight="667.0" prefWidth="375.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="375.0">
+               <children>
+                  <Label text="활동 내역" textFill="#f26900">
+                     <font>
+                        <Font name="HCR Batang Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="280.0" prefWidth="375.0">
+               <children>
+                  <TableView fx:id="tableView1" prefHeight="243.0" prefWidth="375.0">
+                    <columns>
+                      <TableColumn fx:id="writeCol" prefWidth="286.0" text="작성 게시글" />
+                        <TableColumn fx:id="writeTimeCol" prefWidth="75.0" text="작성일" />
+                    </columns>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TableView>
+               </children>
+            </HBox>
+            <HBox prefHeight="295.0" prefWidth="375.0">
+               <children>
+                  <TableView fx:id="tableView2" prefHeight="171.0" prefWidth="375.0">
+                    <columns>
+                      <TableColumn fx:id="replyCol" prefWidth="290.0" text="작성 댓글" />
+                        <TableColumn fx:id="replyTimeCol" prefWidth="75.0" text="작성일" />
+                    </columns>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TableView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</FlowPane>

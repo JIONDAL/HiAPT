@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" style="-fx-background-color: fcf0d5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.replyFormController">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="96.0" prefWidth="375.0">
+               <children>
+                  <Label text="댓  글" textFill="#f26900">
+                     <font>
+                        <Font name="HCR Batang Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="475.0" prefWidth="375.0">
+               <children>
+                  <TableView fx:id="tableView" onMouseClicked="#tableClick" onMouseEntered="#tableTouch" prefHeight="474.0" prefWidth="375.0">
+                    <columns>
+                      <TableColumn fx:id="replyCol" prefWidth="287.0" text="댓글" />
+                      <TableColumn fx:id="writerCol" minWidth="0.0" prefWidth="88.0" text="작성자" />
+                        <TableColumn fx:id="numCol" minWidth="0.0" prefWidth="62.0" text="No." />
+                        <TableColumn fx:id="writeTimeCol" minWidth="0.0" prefWidth="0.0" text="작성일" />
+                    </columns>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </TableView>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="36.0" prefWidth="375.0">
+               <children>
+                  <Label text="댓글 작성" textFill="#542a0a">
+                     <font>
+                        <Font name="HCR Batang Bold" size="14.0" />
+                     </font></Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="375.0" spacing="10.0">
+               <children>
+                  <TextArea fx:id="replyFld" maxHeight="166.0" onMouseClicked="#replyFldClick" prefHeight="35.0" prefWidth="256.0" style="-fx-border-color: #6b4418; -fx-background-color: fcf0d5; -fx-border-radius: 10px; -fx-border-width: 1px;">
+                     <font>
+                        <Font name="HCR Batang Bold" size="12.0" />
+                     </font></TextArea>
+                  <Button fx:id="writeBtn" alignment="CENTER" mnemonicParsing="false" onAction="#writeReply" prefHeight="25.0" prefWidth="58.0" style="-fx-background-radius: 10px; -fx-background-color: fcf0d5; -fx-border-color: #6b4418; -fx-border-width: 0 2px 0 0;" text="작성 " textFill="#6b4418">
+                     <font>
+                        <Font name="HCR Batang Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#deleteProc" prefHeight="25.0" prefWidth="52.0" style="-fx-background-radius: 10px; -fx-background-color: fcf0d5;" text="삭제" textFill="#6b4418">
+                     <font>
+                        <Font name="HCR Batang Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="375.0" style="-fx-background-color: fcf0d5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.myPageFormController">
+   <top>
+      <FlowPane alignment="CENTER" prefHeight="331.0" prefWidth="375.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="360.0">
+               <children>
+                  <ImageView fitHeight="82.0" fitWidth="65.0" onMouseClicked="#myMoneyProc" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/wallet%20(2).png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+               <FlowPane.margin>
+                  <Insets right="20.0" top="20.0" />
+               </FlowPane.margin>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="238.0" prefWidth="360.0">
+               <children>
+                  <ImageView blendMode="DARKEN" fitHeight="184.0" fitWidth="203.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../image/mypage.png" />
+                     </image>
+                     <effect>
+                        <Blend mode="OVERLAY">
+                           <topInput>
+                              <Lighting>
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant />
+                                 </light>
+                              </Lighting>
+                           </topInput></Blend>
+                     </effect>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </FlowPane>
+   </top>
+   <right>
+      <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="367.0" prefWidth="375.0" spacing="30.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#changeInfoProc" prefHeight="60.0" prefWidth="230.0" style="-fx-background-radius: 10px; -fx-background-color: fcf0d5; -fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px;" text="정보 수정" textFill="#6b4418">
+               <font>
+                  <Font name="HCR Batang Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#activityProc" prefHeight="60.0" prefWidth="230.0" style="-fx-background-radius: 15px; -fx-background-color: fcf0d5; -fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px;" text="활동내역" textFill="#6b4418">
+               <font>
+                  <Font name="HCR Batang Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#costViewProc" prefHeight="60.0" prefWidth="230.0" style="-fx-background-radius: 10px; -fx-background-color: fcf0d5; -fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px;" text="내 관리비 조회" textFill="#6b4418">
+               <font>
+                  <Font name="HCR Batang Bold" size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
