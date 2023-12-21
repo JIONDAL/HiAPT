@@ -15,6 +15,7 @@ import controller.costViewFormController;
 import controller.myMoneyFormController;
 import controller.mySecretFormController;
 import controller.replyFormController;
+import controller.userFormController;
 import controller.userFreeBoardFormController;
 import controller.userSecretFormController;
 import controller.viewFreeFormController;
@@ -315,13 +316,10 @@ public class Opener {
 	// 기존 로그인 창에 유저창 열기(화면 바뀜)
 	public void userFormOpen() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userForm.fxml"));
-
 		Parent userForm;
 		try {
 			userForm = loader.load();
-			Label id = (Label) userForm.lookup("#id");
-			id.setText(Login.getId() + "호");
-
+			
 			primaryStage.setScene(new Scene(userForm));
 			primaryStage.setTitle("하이미디어 아파트 입주민");
 			primaryStage.show();

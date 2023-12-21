@@ -33,7 +33,7 @@ private MemberDAO memberDao;
 		Matcher matcher = pattern.matcher(phoneFld.getText());
 		
 		if(matcher.matches() == false) {
-			CommonService.msg("핸드폰 번호는 하이픈(-)을 사용하여 입력해주세요.(010/011/016/017/018/019 가능)");
+			CommonService.msg("핸드폰 번호를 확인하세요.(010/011/016/017/018/019)-000(0)-0000");
 			return result;
 		}
 		

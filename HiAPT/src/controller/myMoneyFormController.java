@@ -23,15 +23,15 @@ public class myMoneyFormController implements Initializable {
 	@FXML Label idLabel;
 	@FXML Label moneyLabel;
 	
-	String money = "0";
+	//String money = "0";
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		idLabel.setText(Login.getId());
 		
 		//잔액 조회
-		if(costDao.selectMoney(Login.getId()) != null) {
-			money = costDao.selectMoney(Login.getId());
-		}
+		String money = costDao.selectMoney(Login.getId());
+		if(money == null || money.isEmpty() == true)
+			money = "0";
 		
 		moneyLabel.setText(money);
 	}

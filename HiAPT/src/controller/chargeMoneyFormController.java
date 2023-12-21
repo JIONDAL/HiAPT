@@ -18,6 +18,7 @@ import login.costDAO;
 
 public class chargeMoneyFormController implements Initializable {
 	Opener opener = new Opener();
+	
 	@FXML
 	ComboBox<String> combo;
 	ObservableList<String> comboData;
@@ -41,7 +42,7 @@ public class chargeMoneyFormController implements Initializable {
 				"-fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px; -fx-background-radius: 30px;");
 	}
 
-	// 콤보박스에서 금액 선택후 충전버튼 클릭시
+	// 콤보박스에서 금액 선택 후 충전버튼 클릭시
 	public void chargeProc() {
 		String money = combo.getValue();
 		if(CommonService.confirmMsg(money + "원을 충전하시겠습니까?").get().equals(ButtonType.OK)){

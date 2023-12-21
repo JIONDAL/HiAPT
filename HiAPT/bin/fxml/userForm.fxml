@@ -21,7 +21,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="150.0" prefWidth="369.0">
                      <children>
-                        <Label fx:id="id" alignment="CENTER" textFill="#542a0a">
+                        <Label fx:id="idLabel" alignment="CENTER" textFill="#542a0a">
                            <font>
                               <Font name="HCR Batang Bold" size="18.0" />
                            </font>
