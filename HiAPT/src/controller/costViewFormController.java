@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import DAO.costDAO;
+import DTO.CostDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,10 +18,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import login.CommonService;
-import login.CostDTO;
-import login.Opener;
-import login.costDAO;
+import service.CommonService;
+import main.Opener;
 
 public class costViewFormController implements Initializable {
 	Opener opener = new Opener();
@@ -35,31 +35,33 @@ public class costViewFormController implements Initializable {
 	
 	@FXML
 	ComboBox<String> combo;
-	ObservableList<String> comboData;
+	//ObservableList<String> comboData;
 
 	// tableview에 데이터 넣기
 	@FXML
 	TableView<CostDTO> tableView;
 	@FXML
-	TableColumn<CostDTO, String> detailsCol;
+	TableColumn<CostDTO, String> monthCol;
 	@FXML
-	TableColumn<CostDTO, String> costsCol;
+	TableColumn<CostDTO, String> totalCostCol;
 	ObservableList<CostDTO> observableList;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		comboData = FXCollections.observableArrayList("2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019");
-		combo.setItems(comboData);
+		//comboBox에 데이터 넣기 -> ObservableList 사용하거나 getItems.addAll() 메서드 사용
+		//comboData = FXCollections.observableArrayList("2025", "2024", "2023", "2022");
+		//combo.setItems(comboData);
+		combo.getItems().addAll("2025", "2024", "2023", "2022");
 		combo.setValue("년도 선택");
 		combo.setStyle("-fx-font-size: 15px;");
 		combo.setStyle("-fx-background-color: #fcf0d5;");
 		combo.setStyle("-fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px; -fx-background-radius: 30px;");
 		
 		tableView.setFixedCellSize(33);// 행 높이
-		detailsCol.setStyle("-fx-pref-height: 70px;");// 헤더 높이
-		detailsCol.setStyle("-fx-alignment: CENTER;");//
-		costsCol.setStyle("-fx-pref-height: 70px;");
-		costsCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+		monthCol.setStyle("-fx-pref-height: 70px;");// 헤더 높이
+		monthCol.setStyle("-fx-alignment: CENTER;");//
+		totalCostCol.setStyle("-fx-pref-height: 70px;");
+		totalCostCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 		tableView.setStyle("-fx-font-size:14px;");
 	}
 	
@@ -77,15 +79,13 @@ public class costViewFormController implements Initializable {
 	String year;
 	@FXML
 	private void useHandleChange(ActionEvent event) {
-//	    System.out.println(
-//			combo.getSelectionModel().getSelectedItem() + ", " + combo.getSelectionModel().getSelectedIndex());
-//		출력 결과 1:1 문의, 1
 		year = combo.getSelectionModel().getSelectedItem();
-
+		
+		//테이블뷰에 월별 관리비 나타내기 
 		observableList = FXCollections.observableArrayList();
 
-		detailsCol.setCellValueFactory(new PropertyValueFactory<>("month"));
-		costsCol.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
+		monthCol.setCellValueFactory(new PropertyValueFactory<>("month"));
+		totalCostCol.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
 
 		Collection<CostDTO> list = costDao.selectMonthly(year);
 		observableList.addAll(list);

@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DTO.CostDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,10 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import login.CommonService;
-import login.CostDTO;
-import login.CostRegFormService;
-import login.Opener;
+import service.CommonService;
+import service.CostRegFormService;
+import main.Opener;
 
 public class costRegFormController implements Initializable {
 	@FXML
@@ -22,16 +22,12 @@ public class costRegFormController implements Initializable {
 	private ComboBox<String> monthCmb;
 	@FXML
 	private ComboBox<String> complexCmb;
-	private ObservableList<String> complexs = FXCollections.observableArrayList("101동", "102동", "103동", "104동");
 	@FXML
 	private ComboBox<String> unitCmb;
 	private ObservableList<String> unit101 = FXCollections.observableArrayList
 			("101호", "102호", "201호", "202호", "301호", "302호", "401호", "402호", "501호", "502호");
 	private ObservableList<String> unit102 = FXCollections.observableArrayList
-			("101호", "102호", "103호", "201호", "202호", "203호", "301호", "302호", "303호", "401호", "402호", "403호", 
-			"501호", "502호", "503호", "601호", "602호", "603호", "701호", "702호", "703호");
-	private ObservableList<String> unit103 = FXCollections.observableArrayList("101호", "102호", "103호", "104호", "301호",
-			"302호");
+			("101호", "102호", "201호", "202호", "301호", "302호", "401호", "402호", "501호", "502호");
 	
 	@FXML
 	private TextField commonCostFld;
@@ -73,13 +69,12 @@ public class costRegFormController implements Initializable {
 		service = new CostRegFormService();
 		
 		yearCmb.setValue("연도 선택");
-		yearCmb.getItems().addAll("2026년", "2025년", "2024년", "2023년", "2022년", "2021년", "2020년", "2019년");
+		yearCmb.getItems().addAll("2025년", "2024년", "2023년", "2022년");
 		monthCmb.setValue("월 선택");
-		monthCmb.getItems().addAll("01월", "02월", "03월", "04월", "05월", "06월", "07월", "08월", "09월", "10월", "11월",
-				"12월");
+		monthCmb.getItems().addAll("01월", "02월", "03월", "04월", "05월", "06월", "07월", "08월", "09월", "10월", "11월", "12월");
 		
 		complexCmb.setValue("동 선택");
-		complexCmb.getItems().addAll("101동", "102동", "103동", "104동");
+		complexCmb.getItems().addAll("101동", "102동");
 
 		unitCmb.setValue("호수 선택");
 
@@ -105,12 +100,6 @@ public class costRegFormController implements Initializable {
 			break;
 		case "102동":
 			unitCmb.setItems(unit102);
-			break;
-		case "103동":
-			unitCmb.setItems(unit103);
-			break;
-		case "104동":
-			unitCmb.setItems(unit103);
 			break;
 		}
 	}

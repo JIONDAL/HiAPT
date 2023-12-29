@@ -9,8 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import login.CommonService;
-import login.RegService;
+import service.CommonService;
+import service.RegService;
 
 public class RegController implements Initializable {
 	private Stage regStage;
@@ -38,6 +38,7 @@ public class RegController implements Initializable {
 		if(idFld.getText().length() > 5) {
 			regBtn.setDisable(false);
 		}
+		
 		if(idFld.getText().length() > 7) {
 			CommonService.msg("아이디는 동-호수 입니다");
 			idFld.setText(idFld.getText().substring(0, 7));
@@ -46,12 +47,12 @@ public class RegController implements Initializable {
 	
 	public void carCheck() {
 		if(carFld.getText().length() > 4) {
-			CommonService.msg("차량번호는 뒤에 네자리만 입력하세요");
+			CommonService.msg("차량번호는 뒤 네자리만 입력하세요");
 			carFld.setText(carFld.getText().substring(0, 4));
 		}
 	}	
 	
-	// 회원가입 버튼 클릭 시 관리자 승인을 기다리세요! 알림창 뜨도록 
+	// 회원가입 버튼 클릭 시 "관리자 승인을 기다리세요!" 알림창 뜨도록 
 	public void regProc() {
 		regService.insert(regForm);
 	}

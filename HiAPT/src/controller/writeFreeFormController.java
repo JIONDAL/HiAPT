@@ -3,15 +3,15 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DTO.AptDTO;
+import DTO.BoardDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import login.BoardDTO;
-import login.CommonService;
-import login.Login;
-import login.writeFreeFormService;
+import service.CommonService;
+import service.writeFreeFormService;
 
 public class writeFreeFormController implements Initializable{
 	private writeFreeFormService service;
@@ -41,7 +41,7 @@ public class writeFreeFormController implements Initializable{
 	      }else {
 	         boardDto.setTitle(titleFld.getText());
 	         boardDto.setContent(contentFld.getText());
-	         boardDto.setWriter(Login.getId());
+	         boardDto.setWriter(AptDTO.getId());
 	         
 	         int result = service.insert(boardDto);
 	         if (result == 1) {

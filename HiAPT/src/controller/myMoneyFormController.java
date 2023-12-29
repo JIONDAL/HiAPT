@@ -3,13 +3,13 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.costDAO;
+import DTO.AptDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import login.Login;
-import login.Opener;
-import login.costDAO;
+import main.Opener;
 
 public class myMoneyFormController implements Initializable {
 	costDAO costDao = new costDAO();
@@ -26,10 +26,10 @@ public class myMoneyFormController implements Initializable {
 	//String money = "0";
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		idLabel.setText(Login.getId());
+		idLabel.setText(AptDTO.getId());
 		
 		//잔액 조회
-		String money = costDao.selectMoney(Login.getId());
+		String money = costDao.selectMoney(AptDTO.getId());
 		if(money == null || money.isEmpty() == true)
 			money = "0";
 		

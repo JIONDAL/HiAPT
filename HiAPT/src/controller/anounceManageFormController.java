@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import DAO.BoardDAO;
+import DTO.BoardDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,10 +24,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import login.BoardDAO;
-import login.BoardDTO;
-import login.CommonService;
-import login.anounceManageFormService;
+import service.CommonService;
+import service.anounceManageFormService;
 
 public class anounceManageFormController implements Initializable{
 	@FXML

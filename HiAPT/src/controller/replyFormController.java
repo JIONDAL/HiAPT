@@ -4,6 +4,10 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import DAO.BoardDAO;
+import DTO.AptDTO;
+import DTO.BoardDTO;
+import DTO.replyDTO;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -19,12 +23,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import login.BoardDAO;
-import login.BoardDTO;
-import login.CommonService;
-import login.Login;
-import login.replyDTO;
-import login.replyFormService;
+import service.CommonService;
+import service.replyFormService;
 
 public class replyFormController implements Initializable {
 	replyFormService service;
@@ -86,7 +86,7 @@ public class replyFormController implements Initializable {
 		replyDTO replyDto = new replyDTO();
 		replyDto.setTitle(dto.getTitle());// 글의 제목(어느 글에 댓글을 작성했는지 체크하기 위함)
 		replyDto.setContent(dto.getContent());// 글의 내용(어느 글에 댓글을 작성했는지 체크하기 위함)
-		replyDto.setWriter(Login.getId());// 댓글 작성자
+		replyDto.setWriter(AptDTO.getId());// 댓글 작성자
 		replyDto.setReply(replyFld.getText());// 작성한 댓글
 
 		if (replyDto.getReply().isEmpty()) {
@@ -115,7 +115,7 @@ public class replyFormController implements Initializable {
 		
 		writeBtn.setDisable(true);
 		//댓글 작성자 = 댓글 클릭한 사용자의 아이디가 다를 경우 삭제 버튼 비활성화
-		if(!dto.getWriter().equals(Login.getId())) {
+		if(!dto.getWriter().equals(AptDTO.getId())) {
 			deleteBtn.setDisable(true);
 		}
 	}

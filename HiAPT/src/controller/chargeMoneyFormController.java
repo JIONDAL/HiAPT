@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
+import DAO.costDAO;
+import DTO.AptDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,10 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-import login.CommonService;
-import login.Login;
-import login.Opener;
-import login.costDAO;
+import service.CommonService;
+import main.Opener;
 
 public class chargeMoneyFormController implements Initializable {
 	Opener opener = new Opener();
@@ -50,9 +50,9 @@ public class chargeMoneyFormController implements Initializable {
 			money = String.valueOf(Integer.parseInt(split[0])*1000);
 			
 			costDAO costDao = new costDAO();
-			String balance = costDao.selectMoney(Login.getId());
+			String balance = costDao.selectMoney(AptDTO.getId());
 			money = String.valueOf(Integer.parseInt(money) + Integer.parseInt(balance));
-			costDao.setMymoney(Login.getId(), money);
+			costDao.setMymoney(AptDTO.getId(), money);
 			
 			myMoneyStage.close();
 			opener.myMoneyFormOpen();

@@ -1,6 +1,6 @@
 package controller;
 
-import login.Opener;
+import main.Opener;
 
 public class costManageFormController {
 	

@@ -3,17 +3,17 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.MemberDAO;
+import DTO.AptDTO;
+import DTO.MemberDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import login.CommonService;
-import login.Login;
-import login.MemberDAO;
-import login.MemberDTO;
-import login.changeInfoFormService;
+import service.CommonService;
+import service.changeInfoFormService;
 
 public class changeInfoFormController implements Initializable {
 	MemberDAO memberDao = new MemberDAO();
@@ -40,7 +40,7 @@ public class changeInfoFormController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		service = new changeInfoFormService();
 		
-		member = memberDao.selectId(Login.getId());
+		member = memberDao.selectId(AptDTO.getId());
 		nameFld.setText(member.getName());
 		phoneFld.setText(member.getPhone());
 		

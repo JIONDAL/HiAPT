@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+import DAO.BoardDAO;
+import DTO.AptDTO;
+import DTO.BoardDTO;
 import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -19,12 +22,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import login.BoardDAO;
-import login.BoardDTO;
-import login.CommonService;
-import login.Login;
-import login.Opener;
-import login.viewFreeFormService;
+import service.CommonService;
+import main.Opener;
+import service.viewFreeFormService;
 
 public class viewFreeFormController implements Initializable {
 	Opener opener = new Opener();
@@ -108,12 +108,12 @@ public class viewFreeFormController implements Initializable {
 	// 좋아요 기능
 	public void heartProc() {
 		//hashSet에 아이디가 있으면 true 반환
-		if (clickedIds.contains(Login.getId())) {
+		if (clickedIds.contains(AptDTO.getId())) {
 			CommonService.msg("이미 좋아요한 글 입니다.");
 			return;
 		}
 
-		clickedIds.add(Login.getId());
+		clickedIds.add(AptDTO.getId());
 		ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.5), heart);
 
 		scaleTransition.setToX(2);

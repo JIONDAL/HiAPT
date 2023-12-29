@@ -3,13 +3,13 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DTO.AptDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
-import login.Login;
-import login.Opener;
-import login.checkPwFormService;
+import main.Opener;
+import service.checkPwFormService;
 
 public class checkPwFormController implements Initializable {
 	
@@ -29,7 +29,7 @@ public class checkPwFormController implements Initializable {
 	
 	//확인버튼 누르면 실행
 	public void checkPwProc() {
-		int result = service.checkPw(Login.getId(), pwFld.getText()); 
+		int result = service.checkPw(AptDTO.getId(), pwFld.getText()); 
 		if(result == 1) {
 			//비밀번호 일치시 - > 회원정보 수정 창 열기
 			opener.changeInfoFormOpen();

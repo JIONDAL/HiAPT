@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import login.Opener;
+import main.Opener;
 
 public class userManageFormController implements Initializable {
 	

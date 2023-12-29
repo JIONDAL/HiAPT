@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DTO.AptDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,10 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import login.CommonService;
-import login.Login;
-import login.LoginService;
-import login.Opener;
+import javafx.stage.Stage;
+import service.CommonService;
+import service.LoginService;
+import main.Opener;
 
 public class LoginController implements Initializable {
 	@FXML
@@ -26,11 +27,17 @@ public class LoginController implements Initializable {
 
 	private LoginService service;
 	private Opener opener;
-
+	private Stage primaryStage;
+	
 	public void setOpener(Opener opener) {
 		this.opener = opener;
 	}
-
+	
+	public void setStage(Stage primaryStage) {
+		// TODO Auto-generated method stub
+		this.primaryStage = primaryStage;
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		loginBtn.setDisable(true);
@@ -75,11 +82,11 @@ public class LoginController implements Initializable {
 
 		service.login(idFld.getText(), pwFld.getText());
 
-		if (Login.getId() == null)
+		if (AptDTO.getId() == null)
 			return;
 
 		// 로그인 성공이라면 로그인 창에 userPage or adminPage을 실행
-		if (Login.getId().equals("admin"))
+		if (AptDTO.getId().equals("admin"))
 			opener.adminFormOpen();
 		else
 			opener.userFormOpen();
@@ -90,10 +97,10 @@ public class LoginController implements Initializable {
 		opener.regFormOpen();
 	}
 
-	// 취소 버튼을 클릭하면 동작하는 메서드
+	// 닫기 버튼을 클릭하면 동작하는 메서드
 	public void cancelProc() {
-		idFld.clear();
-		pwFld.clear();
-		idFld.requestFocus();
+		primaryStage.close();
 	}
+
+	
 }

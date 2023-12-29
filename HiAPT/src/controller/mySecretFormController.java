@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import DAO.BoardDAO;
+import DTO.BoardDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,9 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import login.BoardDAO;
-import login.BoardDTO;
-import login.CommonService;
+import service.CommonService;
 
 public class mySecretFormController implements Initializable {
 	BoardDAO dao = new BoardDAO();

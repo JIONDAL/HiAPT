@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-import login.Opener;
+import main.Opener;
 
 public class userSecretFormController implements Initializable{
 	Opener opener = new Opener();

@@ -4,6 +4,9 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import DAO.costDAO;
+import DTO.CostDTO;
+import DTO.costMonth;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,11 +18,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import login.CommonService;
-import login.CostDTO;
-import login.Opener;
-import login.costDAO;
-import login.costMonth;
+import service.CommonService;
+import main.Opener;
 
 public class costViewForm2Controller implements Initializable{
 	Opener opener = new Opener();
@@ -37,8 +37,8 @@ public class costViewForm2Controller implements Initializable{
 	ObservableList<costMonth> observableList;
 	
 	@FXML RadioButton monthly;
-	@FXML Label moon; //0월달 관리비 조회
-	@FXML Label moons; //0월달 납부하실 관리비는
+	@FXML Label moon; //*월달 관리비 조회(상단 라벨)
+	@FXML Label moons; //*월달 납부하실 관리비는(하단 라벨)
 	@FXML Label total;
 	
 	//이번달 관리비 조회

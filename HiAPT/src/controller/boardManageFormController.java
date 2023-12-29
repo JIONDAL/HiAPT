@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
-import login.Opener;
+import main.Opener;
 
 public class boardManageFormController implements Initializable {
 

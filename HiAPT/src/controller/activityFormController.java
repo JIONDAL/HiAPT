@@ -4,6 +4,9 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import DAO.BoardDAO;
+import DTO.BoardDTO;
+import DTO.replyDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,10 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import login.BoardDAO;
-import login.BoardDTO;
-import login.CommonService;
-import login.replyDTO;
+import service.CommonService;
 
 public class activityFormController implements Initializable {
 	//작성 게시글, 작성 댓글 

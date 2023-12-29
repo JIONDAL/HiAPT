@@ -59,8 +59,8 @@
                <children>
                   <TableView fx:id="tableView" prefHeight="473.0" prefWidth="375.0">
                     <columns>
-                      <TableColumn fx:id="detailsCol" prefWidth="183.0" text="월" />
-                      <TableColumn fx:id="costsCol" prefWidth="192.0" text="비용 총계" />
+                      <TableColumn fx:id="monthCol" prefWidth="183.0" text="월" />
+                      <TableColumn fx:id="totalCostCol" prefWidth="192.0" text="비용 총계" />
                     </columns>
                      <cursor>
                         <Cursor fx:constant="HAND" />

@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import login.Opener;
+import main.Opener;
 
 public class myPageFormController implements Initializable {
 	private Opener opener = new Opener();

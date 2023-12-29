@@ -13,6 +13,10 @@ import java.util.ResourceBundle;
 
 import javax.swing.DefaultCellEditor;
 
+import DAO.costDAO;
+import DTO.AptDTO;
+import DTO.CostDTO;
+import DTO.costMonth;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,13 +31,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import login.CommonService;
-import login.CostDTO;
-import login.Login;
-import login.Opener;
-import login.costDAO;
-import login.costMonth;
-import login.costPayFormService;
+import service.CommonService;
+import main.Opener;
+import service.costPayFormService;
 
 public class costPayFormController implements Initializable {
 	Stage costPayStage;
@@ -76,12 +76,14 @@ public class costPayFormController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		service = new costPayFormService();
-
+		myPayBtn.setDisable(true);
+		bankPayBtn.setDisable(true);
+		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM");
 		LocalDateTime now = LocalDateTime.now();
 
-		yearCmb.setValue(dtf.format(now).substring(0, 4));
-		yearCmb.getItems().addAll("2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019");
+		yearCmb.setValue(dtf.format(now).substring(0, 4));//현재 날짜를 세팅
+		yearCmb.getItems().addAll("2025", "2024", "2023", "2022");
 		yearCmb.setStyle("-fx-font-size: 15px;");
 		yearCmb.setStyle("-fx-background-color: #fcf0d5;");
 		yearCmb.setStyle("-fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px; -fx-background-radius: 30px;");
@@ -109,9 +111,16 @@ public class costPayFormController implements Initializable {
 		month = monthCmb.getValue();
 		
 		//내 관리비 조회
-		cost = service.selectCosts(year, month, Login.getId());
+		cost = service.selectCosts(year, month, AptDTO.getId());
 		if (cost == null) {
 			CommonService.msg("등록된 관리비가 없습니다. 관리자에 문의하세요.");
+			
+			tableView.getItems().clear();
+		    deadlineLabel.setText("");
+		    statusLabel.setText("");
+		    monthCostLabel.setText("");
+		    unpaidLabel.setText("");
+		    
 			myPayBtn.setDisable(true);
 			bankPayBtn.setDisable(true);
 		} else {
@@ -166,16 +175,16 @@ public class costPayFormController implements Initializable {
 	int unpaidTotal;
 	//myPay 결제하기 눌렀을 때
 	public void myPayProc() {
-		String myMoney = costDao.selectMoney(Login.getId());
+		String myMoney = costDao.selectMoney(AptDTO.getId());
 		
 		if(Integer.parseInt(myMoney) < monthCost) {
-			CommonService.msg("출금 가능한 금액이 부족합니다.");
+			CommonService.msg("myPay 잔액이 부족합니다.");
 		} else {
 			ButtonType btnType = CommonService.confirm("현재 잔액 : " + myMoney + "원", monthCost + "원을 납부하시겠습니까?");
 			if(btnType == ButtonType.OK) {
 				String balance = Integer.toString(Integer.parseInt(myMoney) - monthCost);
 				service.setMymoney(balance);
-				service.statusUpdate(Login.getId(), year, month);
+				service.statusUpdate(AptDTO.getId(), year, month);
 				CommonService.msg(year + "년 " + month + "월 " + "관리비가 납부되었습니다.");
 				statusLabel.setText("납부");
 				unpaidLabel.setText(service.unpaid() + " 원");

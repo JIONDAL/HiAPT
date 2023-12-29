@@ -6,6 +6,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import DAO.BoardDAO;
+import DTO.AptDTO;
+import DTO.BoardDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,11 +25,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import login.BoardDAO;
-import login.BoardDTO;
-import login.CommonService;
-import login.Login;
-import login.freeManageFormService;
+import service.CommonService;
+import service.freeManageFormService;
 
 public class freeManageFormController implements Initializable{
 	@FXML
@@ -122,7 +122,7 @@ public class freeManageFormController implements Initializable{
 		
 		title = up.getTitle();
 		content = up.getContent();
-		writer = Login.getId();
+		writer = AptDTO.getId();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
 		LocalDateTime now = LocalDateTime.now();
 		writeTime = dtf.format(now);

@@ -3,6 +3,8 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.costDAO;
+import DTO.AptDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,11 +14,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import login.CommonService;
-import login.Login;
-import login.Opener;
-import login.accountFormService;
-import login.costDAO;
+import service.CommonService;
+import main.Opener;
+import service.accountFormService;
 
 public class accountFormContoller implements Initializable{
 	costDAO costDao = new costDAO();
@@ -30,12 +30,6 @@ public class accountFormContoller implements Initializable{
 	public void setAccountStage(Stage accountStage) {
 		this.accountStage = accountStage;
 	}
-	
-	Stage costPayStage;
-	public void setCostPayStage(Stage costPayStage) {
-		this.costPayStage = costPayStage;
-	}
-	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -61,7 +55,7 @@ public class accountFormContoller implements Initializable{
 		bankLabel.setText(bank + "은행");
 		
 		//계좌번호 보여주기
-		accounting = service.selectAccount(Login.getId(), bank);
+		accounting = service.selectAccount(AptDTO.getId(), bank);
 		accountingLabel.setText(accounting);
 	}
 	
@@ -76,7 +70,7 @@ public class accountFormContoller implements Initializable{
 	Opener opener = new Opener();
 	//입금 요청 버튼 클릭시
 	public void requestProc() {
-		if(CommonService.confirmMsg(year + "년 " + month + "월 관리비 납부를 확인 요청하시겠습니까?").get().equals(ButtonType.OK)){
+		if(CommonService.confirmMsg(year + "년 " + month + "월 관리비를 납부하셨습니까?").get().equals(ButtonType.OK)){
 			String status = "확인요청";
 			service.request(year, month, status);
 			CommonService.msg("관리자 확인 후 '납부' 처리됩니다.");
