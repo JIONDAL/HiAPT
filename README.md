@@ -1,2 +1,3 @@
-# HiAPT
-하이미디어 세미 프로젝트 '하이아파트'
+# Hi APT
+
+<img src="https://img.shields.io/badge/리액트-61DAFB?style=flat&logo=React&logoColor=white"/>
