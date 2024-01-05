@@ -12,10 +12,10 @@ public class CostDTO {
 	private String powerCost;
 	private String waterCost;
 	private String operCost;
-	private SimpleStringProperty totalCost;
 	private String year;
-	private SimpleStringProperty month;
 	private String pay;
+	private SimpleStringProperty totalCost;
+	private SimpleStringProperty month;
 	
 	public CostDTO(String totalCost, String month) {
 		super();

@@ -22,7 +22,7 @@ public class MemberDAO {
 	private String status;
 	
 	public MemberDAO() {
-		String url = "jdbc:oracle:thin:@192.168.219.126:1521:xe";
+		String url = "jdbc:oracle:thin:@59.15.170.143:1521:xe";
 		String user = "oracle";
 		String password = "oracle";
 

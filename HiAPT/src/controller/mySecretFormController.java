@@ -83,8 +83,8 @@ public class mySecretFormController implements Initializable {
 	@FXML Button deleteBtn;
 	// 선택한 행 필드에 보여주기
 	@FXML
-	void tableClick(MouseEvent event) {
-		if (!tableView.getSelectionModel().isEmpty()) {
+	void tableClick() {
+		if(tableView.getSelectionModel().getSelectedItem() != null) {
 			changeBtn.setDisable(false);
 			deleteBtn.setDisable(false);
 			dto = tableView.getSelectionModel().getSelectedItem();
@@ -92,14 +92,14 @@ public class mySecretFormController implements Initializable {
 			titleFld.setText(dto.getTitle());
 			contentFld.setText(dto.getContent());
 			writeTime.setText(dto.getWriteTime());
-		} else {
-
+		}else {
+			
 		}
 	}
 	
 	// 답변보기 눌렀을 때 실행할 메서드
 	@FXML
-	void viewComment(MouseEvent event) {
+	void viewComment() {
 		changeBtn.setDisable(true);
 		deleteBtn.setDisable(true);
 		if (tableView.getSelectionModel().isEmpty()) {
@@ -121,7 +121,7 @@ public class mySecretFormController implements Initializable {
 	// 수정버튼 클릭시 실행
 	@SuppressWarnings("unlikely-arg-type")
 	@FXML
-	void updateProc(ActionEvent event) {
+	void updateProc() {
 		if(tableView.getSelectionModel().isEmpty()) {
 			CommonService.alert("확인", "수정할 데이터를 선택한 후 사용하세요.");
 			return;
@@ -144,7 +144,6 @@ public class mySecretFormController implements Initializable {
 				Collection<BoardDTO> all = dao.mySecretViewAll();
 				observableList = FXCollections.observableArrayList(all);
 				tableView.setItems(observableList);
-
 			} else {
 				CommonService.msg("취소했습니다.");
 			}
@@ -153,9 +152,9 @@ public class mySecretFormController implements Initializable {
 	}
 
 	//삭제 버튼 클릭시
-	public void deleteProc(ActionEvent event) {
+	public void deleteProc() {
 		if (tableView.getSelectionModel().isEmpty()) {
-			CommonService.msg("삭제할 데이터를 선택하세요.");
+			CommonService.alert("확인", "삭제할 데이터를 선택한 후 사용하세요.");
 			return;
 		}
 

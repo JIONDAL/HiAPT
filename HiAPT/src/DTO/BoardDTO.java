@@ -21,25 +21,25 @@ public class BoardDTO {
 
 	}
 
-	public BoardDTO(int num, String title, String content, String writeTime) {
-		super();
-		this.num = new SimpleIntegerProperty(num);
-		this.title = new SimpleStringProperty(title);
-		this.content = new SimpleStringProperty(content);
-		this.writeTime = new SimpleStringProperty(writeTime);
-	}
-	
-	public BoardDTO(int num, String title, String content, String writeTime, String comments) {
-		super();
-		this.num = new SimpleIntegerProperty(num);
-		this.title = new SimpleStringProperty(title);
-		this.content = new SimpleStringProperty(content);
-		this.writeTime = new SimpleStringProperty(writeTime);
-		this.comments = new SimpleStringProperty(comments);
-	}
-
+//	public BoardDTO(int num, String title, String content, String writeTime) {
+//		super();
+//		this.num = new SimpleIntegerProperty(num);
+//		this.title = new SimpleStringProperty(title);
+//		this.content = new SimpleStringProperty(content);
+//		this.writeTime = new SimpleStringProperty(writeTime);
+//	}
+//	
+//	public BoardDTO(int num, String title, String content, String writeTime, String comments) {
+//		super();
+//		this.num = new SimpleIntegerProperty(num);
+//		this.title = new SimpleStringProperty(title);
+//		this.content = new SimpleStringProperty(content);
+//		this.writeTime = new SimpleStringProperty(writeTime);
+//		this.comments = new SimpleStringProperty(comments);
+//	}
+//
 	public BoardDTO(int num, String title, String content, String writer, String writeTime, int hits, int likes) {
-		super();
+		//super();
 		this.num = new SimpleIntegerProperty(num);
 		this.title = new SimpleStringProperty(title);
 		this.content = new SimpleStringProperty(content);

@@ -6,12 +6,12 @@ import java.util.regex.Pattern;
 import DAO.MemberDAO;
 import DTO.MemberDTO;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class RegService {
 	private MemberDAO memberDao;
+	
 	public RegService() {
 		memberDao = new MemberDAO();
 	}

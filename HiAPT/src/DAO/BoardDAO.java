@@ -27,7 +27,7 @@ public class BoardDAO {
 	private String comments;
 
 	public BoardDAO() {
-		String url = "jdbc:oracle:thin:@192.168.219.126:1521:xe";
+		String url = "jdbc:oracle:thin:@59.15.170.143:1521:xe";
 		String user = "oracle";
 		String password = "oracle";
 
@@ -47,7 +47,8 @@ public class BoardDAO {
 			ps = con.prepareStatement("SELECT * FROM anounce ORDER BY num ASC");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				BoardDTO member = new BoardDTO(num, title, content, writer, writeTime, hits, likes);
+				//BoardDTO member = new BoardDTO(num, title, content, writer, writeTime, hits, likes);
+				BoardDTO member = new BoardDTO();
 				member.setNum(rs.getInt("num"));
 				member.setTitle(rs.getString("title"));
 				member.setContent(rs.getString("content"));
@@ -233,7 +234,7 @@ public class BoardDAO {
 			ps.setString(1, AptDTO.getId());
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				BoardDTO dto = new BoardDTO(num, title, content, writeTime, comments);
+				BoardDTO dto = new BoardDTO();
 				dto.setNum(rs.getInt("num"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
@@ -455,7 +456,7 @@ public class BoardDAO {
 			ps = con.prepareStatement("SELECT num,title,content,write_time FROM anounce ORDER BY num ASC");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				BoardDTO dto = new BoardDTO(num, title, content, writeTime);
+				BoardDTO dto = new BoardDTO();
 				dto.setNum(rs.getInt("num"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
@@ -482,7 +483,7 @@ public class BoardDAO {
 			
 			ArrayList<BoardDTO> list = new ArrayList<>();
 			while (rs.next()) {
-				BoardDTO dto = new BoardDTO(num, title, content, writeTime);
+				BoardDTO dto = new BoardDTO();
 				dto.setNum(rs.getInt("num"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));

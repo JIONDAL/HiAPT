@@ -36,7 +36,7 @@ public class userSecretFormController implements Initializable{
 	
 	//콤보박스에서 카테고리 선택시 게시판 이동
 	@FXML
-	private void useHandleChange(ActionEvent event) {
+	private void useHandleChange() {
 		if (combo.getSelectionModel().getSelectedItem() == "공지사항") {
 			opener.communityFormOpen();
 			communityStage.close();

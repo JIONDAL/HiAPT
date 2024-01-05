@@ -83,7 +83,7 @@ public class communityFormController implements Initializable {
 	
 	//콤보박스에서 선택하면 게시판 바뀌게
 	@FXML
-	private void useHandleChange(ActionEvent event) {
+	private void useHandleChange() {
 //	    System.out.println(
 //			combo.getSelectionModel().getSelectedItem() + ", " + combo.getSelectionModel().getSelectedIndex());
 //		출력 결과 1:1 문의, 1
@@ -97,11 +97,11 @@ public class communityFormController implements Initializable {
 		}
 	}
 	
-	//내용 검색
+	//내용 검색 
 	@FXML ImageView search;
 	@FXML TextField searchFld;
 	@FXML
-	public void searchProc(MouseEvent event) {
+	public void searchProc() {
 		BoardDAO dao = new BoardDAO();
 		Collection<BoardDTO> search = dao.searchContent(searchFld.getText());
 		if(search == null || search.isEmpty()) {
@@ -121,7 +121,7 @@ public class communityFormController implements Initializable {
 
 	// 선택한 행 필드에 보여주기
 	@FXML
-	void tableClick(MouseEvent event) {
+	void tableClick() {
 		if (!tableView.getSelectionModel().isEmpty()) {
 
 			BoardDTO dto = tableView.getSelectionModel().getSelectedItem();

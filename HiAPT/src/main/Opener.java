@@ -563,8 +563,8 @@ public class Opener {
 		try {
 			userSecretBoardForm = loader.load();
 
-			userSecretFormController userSecretBoardCon = loader.getController();
-			userSecretBoardCon.setCommunityStage(communityStage);
+			userSecretFormController userSecretFormCon = loader.getController();
+			userSecretFormCon.setCommunityStage(communityStage);
 
 			communityStage.setScene(new Scene(userSecretBoardForm));
 			communityStage.setTitle("1:1 문의");

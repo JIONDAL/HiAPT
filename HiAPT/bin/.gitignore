@@ -1,9 +1,6 @@
-/application/
-/controller/
-/fxml/
-/image/
-/login/
-/DTO/
 /DAO/
-/service/
+/DTO/
+/controller/
+/image/
 /main/
+/service/
