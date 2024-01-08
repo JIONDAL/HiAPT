@@ -44,15 +44,7 @@ public class userFreeBoardFormController implements Initializable {
 	TableColumn<BoardDTO, String> titleCol;
 	@FXML
 	TableColumn<BoardDTO, String> contentCol;
-	@FXML
-	TableColumn<BoardDTO, String> writeTimeCol;
-	@FXML
-	TableColumn<BoardDTO, String> writerCol;
-	@FXML
-	TableColumn<BoardDTO, Integer> hitsCol;
-	@FXML
-	TableColumn<BoardDTO, Integer> likesCol;
-	
+
 	ObservableList<BoardDTO> observableList;
 
 	@Override
@@ -61,10 +53,11 @@ public class userFreeBoardFormController implements Initializable {
 		comboData = FXCollections.observableArrayList("공지사항", "1:1 문의", "자유게시판");
 		combo.setItems(comboData);
 		combo.setValue("자유게시판");
-		
+
 		combo.setStyle("-fx-font-size: 15px;");
 		combo.setStyle("-fx-background-color: #fcf0d5;");
-		combo.setStyle("-fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px; -fx-background-radius: 30px;");
+		combo.setStyle(
+				"-fx-border-color: #6b4418; -fx-border-width: 2px; -fx-border-radius: 30px; -fx-background-radius: 30px;");
 
 		// tableview에 데이터 보여주기
 		observableList = FXCollections.observableArrayList();
@@ -72,10 +65,6 @@ public class userFreeBoardFormController implements Initializable {
 		numCol.setCellValueFactory(new PropertyValueFactory<>("num"));
 		titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
 		contentCol.setCellValueFactory(new PropertyValueFactory<>("content"));
-		writeTimeCol.setCellValueFactory(new PropertyValueFactory<>("writeTime"));
-		writerCol.setCellValueFactory(new PropertyValueFactory<>("writer"));
-		hitsCol.setCellValueFactory(new PropertyValueFactory<>("hits"));
-		likesCol.setCellValueFactory(new PropertyValueFactory<>("likes"));
 
 		Collection<BoardDTO> list = dao.freeViewAll();
 
@@ -86,7 +75,7 @@ public class userFreeBoardFormController implements Initializable {
 
 	// combobox 데이터 선택시 화면 바뀜
 	@FXML
-	private void useHandleChange(ActionEvent event) {
+	private void useHandleChange() {
 		if (combo.getSelectionModel().getSelectedItem() == "공지사항") {
 			opener.communityFormOpen();
 			communityStage.close();
@@ -100,23 +89,31 @@ public class userFreeBoardFormController implements Initializable {
 	// 글쓰기 버튼 누르면 새창 뜨게
 	public void writeFreeProc() {
 		opener.wrtieFreeFormOpen();
-
 	}
 
 	@FXML
 	ImageView search;
 	@FXML
 	TextField searchFld;
-	//내용 검색
+
+	// 내용 검색
 	@FXML
-	public void searchProc(MouseEvent event) {
-		Collection<BoardDTO> search = dao.searchFree(searchFld.getText());
-		if (search == null || search.isEmpty()) {
-			CommonService.msg("검색하신 결과가 없습니다.");
-		} else {
-			observableList = FXCollections.observableArrayList(search);
-			tableView.setItems(observableList);
+	public void searchProc() {
+		Collection<BoardDTO> search;
+		if(searchFld.getText().equals("") || searchFld.getText() == null) {
+			CommonService.msg("검색어를 입력하세요.");
+			Collection<BoardDTO> list = dao.freeViewAll();
+			observableList = FXCollections.observableArrayList(list);
+		}else {
+			search = dao.searchFree(searchFld.getText());
+			if (search == null || search.isEmpty()) {
+				CommonService.msg("검색하신 결과가 없습니다.");
+			} else {
+				observableList = FXCollections.observableArrayList(search);
+			}
 		}
+		
+		tableView.setItems(observableList);
 	}
 
 	// 게시글 더블 클릭시 새창으로 글 보여줌
@@ -125,9 +122,10 @@ public class userFreeBoardFormController implements Initializable {
 	void tableClick(MouseEvent event) {
 		dto = tableView.getSelectionModel().getSelectedItem();
 		if (event.getClickCount() > 1) {
-			dao.updateHits(dto.getNum()); //db에 조회수 증가 
+			dao.updateHits(dto.getNum()); // db에 조회수 증가
 			opener.viewFreeFormOpen(dto);
 		}
 	}
+
 
 }

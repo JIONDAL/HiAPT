@@ -63,15 +63,11 @@
             </HBox>
             <HBox prefHeight="495.0" prefWidth="375.0">
                <children>
-                  <TableView fx:id="tableView" onMouseClicked="#tableClick" prefHeight="471.0" prefWidth="375.0">
+                  <TableView fx:id="tableView" onMouseClicked="#tableClick" prefHeight="457.0" prefWidth="831.0">
                      <columns>
                         <TableColumn fx:id="numCol" prefWidth="45.0" text="No." />
                         <TableColumn fx:id="titleCol" prefWidth="105.0" text="제목" />
                         <TableColumn fx:id="contentCol" prefWidth="224.0" text="내용" />
-                        <TableColumn fx:id="writeTimeCol" prefWidth="374.0" text="작성일" />
-                        <TableColumn fx:id="writerCol" prefWidth="299.0" text="작성자" />
-                        <TableColumn fx:id="hitsCol" prefWidth="299.0" text="조회수" />
-                        <TableColumn fx:id="likesCol" prefWidth="299.0" text="좋아요" />
                      </columns>
                      <cursor>
                         <Cursor fx:constant="HAND" />

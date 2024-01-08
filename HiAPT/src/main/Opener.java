@@ -636,7 +636,6 @@ public class Opener {
 	// 자유게시판 글쓰기 -> 새창 열기
 	private Parent wrtieFreeForm;
 	private Stage wrtieFreeStage = new Stage();
-
 	public void wrtieFreeFormOpen() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/writeFreeForm.fxml"));
 		try {
@@ -657,12 +656,12 @@ public class Opener {
 	private Parent viewFreeForm;
 	private Stage viewFreeStage = new Stage();
 	BoardDTO boardDto;
-
 	public void viewFreeFormOpen(BoardDTO dto) {
 		this.boardDto = dto;
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/viewFreeForm.fxml"));
 		try {
 			viewFreeForm = loader.load();
+			
 			viewFreeFormController viewFreeFormCon = loader.getController();
 			viewFreeFormCon.setBoarDto(dto);
 			viewFreeFormCon.setViewFreeStage(viewFreeStage);
@@ -707,7 +706,6 @@ public class Opener {
 			viewFreeStage.setScene(new Scene(viewFreeForm));
 			viewFreeStage.setTitle("자유게시글");
 			viewFreeStage.show();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

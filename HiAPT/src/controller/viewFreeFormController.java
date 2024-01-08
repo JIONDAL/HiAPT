@@ -48,7 +48,7 @@ public class viewFreeFormController implements Initializable {
 	Button changeBtn;
 	@FXML
 	Button deleteBtn;
-
+	
 	private viewFreeFormService service;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -47,7 +47,8 @@ public class BoardDAO {
 			ps = con.prepareStatement("SELECT * FROM anounce ORDER BY num ASC");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				//BoardDTO member = new BoardDTO(num, title, content, writer, writeTime, hits, likes);
+				// BoardDTO member = new BoardDTO(num, title, content, writer, writeTime, hits,
+				// likes);
 				BoardDTO member = new BoardDTO();
 				member.setNum(rs.getInt("num"));
 				member.setTitle(rs.getString("title"));
@@ -61,8 +62,7 @@ public class BoardDAO {
 		}
 		return members;
 	}
-	
-	
+
 	public void insert(BoardDTO board) {
 		String sql = "SELECT MAX(num) FROM anounce";
 
@@ -373,19 +373,19 @@ public class BoardDAO {
 	}
 
 	// 관리자 계정 자유게시판 댓글 삭제하기
-		public void deleteReply(BoardDTO board) {
-			PreparedStatement ps = null;
-			String deleteComment = "관리자에 의해 삭제되었습니다.";
-			try {
-				ps = con.prepareStatement("UPDATE reply SET reply_comment=? WHERE num=?");
-				ps.setString(1, deleteComment);
-				ps.setInt(2, board.getNum());
-				ps.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	public void deleteReply(BoardDTO board) {
+		PreparedStatement ps = null;
+		String deleteComment = "관리자에 의해 삭제되었습니다.";
+		try {
+			ps = con.prepareStatement("UPDATE reply SET reply_comment=? WHERE num=?");
+			ps.setString(1, deleteComment);
+			ps.setInt(2, board.getNum());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-	
+	}
+
 	// 관리자 계정 자유게시판 삭제하기
 	public void deleteFree(BoardDTO board) {
 		PreparedStatement ps = null;
@@ -399,10 +399,10 @@ public class BoardDAO {
 		}
 	}
 
-	//유저-------------------------------------------------------------------------------------------------------------------
-	//활동내역
-	//작성게시글 전체보기
-	public Collection<BoardDTO> myWriteAll(){
+	// 유저-------------------------------------------------------------------------------------------------------------------
+	// 활동내역
+	// 작성게시글 전체보기
+	public Collection<BoardDTO> myWriteAll() {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<BoardDTO> list = new ArrayList<>();
@@ -416,7 +416,7 @@ public class BoardDAO {
 				BoardDTO myWrtie = new BoardDTO();
 				myWrtie.setContent(rs.getString("content"));
 				myWrtie.setWriteTime(rs.getString("write_time"));
-				
+
 				list.add(myWrtie);
 			}
 		} catch (Exception e) {
@@ -424,9 +424,9 @@ public class BoardDAO {
 		}
 		return list;
 	}
-	
-	//작성댓글 전체보기
-	public Collection<replyDTO> myReplyAll(){
+
+	// 작성댓글 전체보기
+	public Collection<replyDTO> myReplyAll() {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<replyDTO> list = new ArrayList<>();
@@ -438,7 +438,7 @@ public class BoardDAO {
 				replyDTO myReply = new replyDTO();
 				myReply.setReply(rs.getString("reply_comment"));
 				myReply.setWriteTime(rs.getString("reply_time"));
-				
+
 				list.add(myReply);
 			}
 		} catch (Exception e) {
@@ -446,7 +446,7 @@ public class BoardDAO {
 		}
 		return list;
 	}
-	
+
 	// 유저가 관리자가 등록한 공지사항 보기
 	public Collection<BoardDTO> announceViewAll() {
 		PreparedStatement ps = null;
@@ -476,11 +476,11 @@ public class BoardDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			
+
 			ps = con.prepareStatement("SELECT num,title,content,write_time FROM anounce WHERE content like ?");
 			ps.setString(1, "%" + searchFld + "%");
 			rs = ps.executeQuery();
-			
+
 			ArrayList<BoardDTO> list = new ArrayList<>();
 			while (rs.next()) {
 				BoardDTO dto = new BoardDTO();
@@ -491,28 +491,29 @@ public class BoardDAO {
 
 				list.add(dto);
 			}
-			
+
 			return list;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
+
 	// 자유게시판 목록
+	// 더블 클릭시 -> 게시글 상세보기를 위해 작성일, 작성자, 조회수, 좋아요수까지 DB에서 가져옴
 	public Collection<BoardDTO> freeViewAll() {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
+
 		ArrayList<BoardDTO> list = new ArrayList<>();
 		try {
-			
+
 			ps = con.prepareStatement(
 					"SELECT num,title,content,write_time,writer,hits,likes FROM free ORDER BY num ASC");
 			rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
 				BoardDTO dto = new BoardDTO();
 				dto.setNum(rs.getInt("num"));
@@ -525,14 +526,14 @@ public class BoardDAO {
 
 				list.add(dto);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
-	
+
 	// 자유게시판 글쓰기
 	public int writeFree(BoardDTO boardDto) {
 		PreparedStatement ps = null;
@@ -541,22 +542,22 @@ public class BoardDAO {
 		try {
 			ps = con.prepareStatement("SELECT MAX(num) FROM free");
 			rs = ps.executeQuery();
-			
+
 			if (rs.next()) {
 				num = rs.getInt(1);
 				num += 1;
 			} else {
 				num = 1;
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		boardDto.setNum(num);
 
 		int result = 0;
-		try {//조회수, 좋아요 수 0
+		try {// 조회수, 좋아요 수 0
 			ps = con.prepareStatement("INSERT INTO free VALUES(?,?,?,?,?,0,0)");
 			ps.setInt(1, boardDto.getNum());
 			ps.setString(2, boardDto.getTitle());
@@ -577,32 +578,28 @@ public class BoardDAO {
 
 		try {
 			ps = con.prepareStatement(
-					"SELECT num,title,content,write_time,writer,hits,likes FROM free WHERE content like ?");
+					"SELECT num,title,content FROM free WHERE content like ?");
 			ps.setString(1, "%" + searchFld + "%");
 			rs = ps.executeQuery();
-			
+
 			ArrayList<BoardDTO> list = new ArrayList<>();
 			while (rs.next()) {
 				BoardDTO dto = new BoardDTO();
 				dto.setNum(rs.getInt("num"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
-				dto.setWriteTime(rs.getString("write_time"));
-				dto.setWriter(rs.getString("writer"));
-				dto.setHits(rs.getInt("hits"));
-				dto.setLikes(rs.getInt("likes"));
 
 				list.add(dto);
 			}
-			
+
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-	//자유게시판 목록에서 글 더블 클릭시 조회수 +1
+
+	// 자유게시판 목록에서 게시글 더블 클릭시 조회수 +1
 	public void updateHits(int num) {
 		PreparedStatement ps = null;
 		try {
@@ -613,8 +610,8 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	//자유게시판 글 수정
+
+	// 자유게시판 글 수정
 	public int myFreeUpdate(BoardDTO board) {
 		PreparedStatement ps = null;
 		int result = 0;
@@ -629,8 +626,8 @@ public class BoardDAO {
 		}
 		return result;
 	}
-	
-	//자유게시판 글 삭제
+
+	// 자유게시판 글 삭제
 	public int myFreeDelete(BoardDTO board) {
 		PreparedStatement ps = null;
 		int result = 0;
@@ -654,18 +651,18 @@ public class BoardDAO {
 			ps.setString(1, replyDto.getTitle());
 			ps.setString(2, replyDto.getContent());
 			rs = ps.executeQuery();
-			
+
 			if (rs.next()) {
 				num = rs.getInt(1);
 				num += 1;
 			} else {
 				num = 1;
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		replyDto.setNum(num);
 
 		int result = 0;
@@ -683,8 +680,8 @@ public class BoardDAO {
 		}
 		return result;
 	}
-	
-	//댓글수 카운트
+
+	// 댓글수 카운트
 	public int replyNum(BoardDTO dto) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -694,15 +691,15 @@ public class BoardDAO {
 			ps.setString(2, dto.getContent());
 			rs = ps.executeQuery();
 			num = 0;
-			while(rs.next())
+			while (rs.next())
 				num += 1;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return num;
 	}
-		
+
 	// 자유게시판 댓글 삭제
 	public void myReplyDelete(replyDTO dto) {
 		PreparedStatement ps = null;
@@ -714,14 +711,15 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// 자유게시판 댓글 목록
 	public Collection<replyDTO> replyViewAll(BoardDTO boardDto) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<replyDTO> list = new ArrayList<>();
 		try {
-			ps = con.prepareStatement("SELECT reply_comment,reply_id,num,reply_time FROM reply where title=? and content=? ORDER BY num ASC");
+			ps = con.prepareStatement(
+					"SELECT reply_comment,reply_id,num,reply_time FROM reply where title=? and content=? ORDER BY num ASC");
 			ps.setString(1, boardDto.getTitle());
 			ps.setString(2, boardDto.getContent());
 			rs = ps.executeQuery();
@@ -734,16 +732,16 @@ public class BoardDAO {
 
 				list.add(dto);
 			}
-			
+
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-	//좋아요 눌렀을 떄
-	public void updateLikes(BoardDTO dto , int count){
+
+	// 좋아요 눌렀을 떄
+	public void updateLikes(BoardDTO dto, int count) {
 		PreparedStatement ps = null;
 		try {
 			ps = con.prepareStatement("UPDATE free SET likes=? WHERE num=? and title=?");
