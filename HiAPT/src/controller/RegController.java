@@ -52,12 +52,12 @@ public class RegController implements Initializable {
 		}
 	}	
 	
-	// 회원가입 버튼 클릭 시 "관리자 승인을 기다리세요!" 알림창 뜨도록 
+	// 회원가입 버튼 클릭시
 	public void regProc() {
 		regService.insert(regForm, regStage);
 	}
 
-	// 취소 버튼 클릭 시 호출되는 메서드
+	// 취소 버튼 클릭시
 	public void cancelProc() {
 		regStage.close();
 	}
