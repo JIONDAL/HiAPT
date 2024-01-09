@@ -744,10 +744,9 @@ public class BoardDAO {
 	public void updateLikes(BoardDTO dto, int count) {
 		PreparedStatement ps = null;
 		try {
-			ps = con.prepareStatement("UPDATE free SET likes=? WHERE num=? and title=?");
+			ps = con.prepareStatement("UPDATE free SET likes=? WHERE num=?");
 			ps.setInt(1, count);
 			ps.setInt(2, dto.getNum());
-			ps.setString(3, dto.getTitle());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

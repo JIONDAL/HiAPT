@@ -101,7 +101,6 @@ public class userFreeBoardFormController implements Initializable {
 	public void searchProc() {
 		Collection<BoardDTO> search;
 		if(searchFld.getText().equals("") || searchFld.getText() == null) {
-			CommonService.msg("검색어를 입력하세요.");
 			Collection<BoardDTO> list = dao.freeViewAll();
 			observableList = FXCollections.observableArrayList(list);
 		}else {

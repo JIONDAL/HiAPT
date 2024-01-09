@@ -56,7 +56,6 @@ public class Opener {
 
 	private Stage regStage;
 	private Parent regForm;
-
 	// 회원가입창 새로열기
 	public void regFormOpen() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/regForm.fxml"));

@@ -12,6 +12,8 @@ import DTO.BoardDTO;
 import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -118,7 +120,9 @@ public class viewFreeFormController implements Initializable {
 
 		scaleTransition.setToX(2);
 		scaleTransition.setToY(2);
-
+		
+        /*
+         *더 간단하게 표현된 eventhandler 
 		scaleTransition.setOnFinished(event -> {
 			ScaleTransition reverseTransition = new ScaleTransition(Duration.seconds(0.5), heart);
 			reverseTransition.setToX(1);
@@ -131,6 +135,22 @@ public class viewFreeFormController implements Initializable {
 			likesLabel.setText(String.valueOf(count));
 			dao.updateLikes(boardDto, count);
 		});
+		*/
+		
+		EventHandler<ActionEvent> event = e -> {
+			ScaleTransition reverseTransition = new ScaleTransition(Duration.seconds(0.5), heart);
+			reverseTransition.setToX(1);
+			reverseTransition.setToY(1);
+			reverseTransition.play();
+			
+			int count = boardDto.getLikes();
+			count++;
+			
+			likesLabel.setText(String.valueOf(count));
+			dao.updateLikes(boardDto, count);
+		};
+		
+		scaleTransition.setOnFinished(event);
 
 		scaleTransition.play();
 	}

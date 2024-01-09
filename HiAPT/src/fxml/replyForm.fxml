@@ -31,8 +31,6 @@
                     <columns>
                       <TableColumn fx:id="replyCol" prefWidth="287.0" text="댓글" />
                       <TableColumn fx:id="writerCol" minWidth="0.0" prefWidth="88.0" text="작성자" />
-                        <TableColumn fx:id="numCol" minWidth="0.0" prefWidth="62.0" text="No." />
-                        <TableColumn fx:id="writeTimeCol" minWidth="0.0" prefWidth="0.0" text="작성일" />
                     </columns>
                      <cursor>
                         <Cursor fx:constant="HAND" />
