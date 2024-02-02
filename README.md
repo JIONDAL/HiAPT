@@ -23,4 +23,5 @@ __언어__   <img src="https://img.shields.io/badge/java-007396?style=flat-squar
 __라이브러리__   <img src="https://img.shields.io/badge/javafx-14A0C4?style=flat-square&logo=javafx&logoColor=white"><br><br>
 __TOOL__   <img src="https://img.shields.io/badge/eclipseide-2C2255?style=flat-square&logo=eclipseide&logoColor=white"> <img src="https://img.shields.io/badge/SqlDeveloper-82B816?style=flat-square&logo=SqlDeveloper&logoColor=white"> <img src="https://img.shields.io/badge/SceneBuilder-FF9E0F?style=flat-square&logo=SceneBuilder&logoColor=white">
 
-## 구현 페이지
+## 페이지 미리보기
+![로그인](https://github.com/JIONDAL/HiAPT/assets/130776751/196f0b9d-666f-4a1a-801d-ac3b7f73fede)
