@@ -24,4 +24,15 @@ __라이브러리__   <img src="https://img.shields.io/badge/javafx-14A0C4?style
 __TOOL__   <img src="https://img.shields.io/badge/eclipseide-2C2255?style=flat-square&logo=eclipseide&logoColor=white"> <img src="https://img.shields.io/badge/SqlDeveloper-82B816?style=flat-square&logo=SqlDeveloper&logoColor=white"> <img src="https://img.shields.io/badge/SceneBuilder-FF9E0F?style=flat-square&logo=SceneBuilder&logoColor=white">
 
 ## 페이지 미리보기
-![로그인](https://github.com/JIONDAL/HiAPT/assets/130776751/196f0b9d-666f-4a1a-801d-ac3b7f73fede)
+<img src="https://github.com/JIONDAL/HiAPT/assets/130776751/196f0b9d-666f-4a1a-801d-ac3b7f73fede" alt="로그인" height="330" width="200">
+
+<img src="https://github.com/JIONDAL/HiAPT/assets/130776751/b2335c96-2822-4ee6-ba50-85b96ca2bc58" alt="회원가입" height="330" width="200">
+
+<img src="https://github.com/JIONDAL/HiAPT/assets/130776751/5c18e12a-304b-41f9-a8fb-9de88ccb2775" alt="클로버" height="330" width="200">
+
+<img src="https://github.com/JIONDAL/HiAPT/assets/130776751/8f2e4dd5-71f9-45a0-827a-a7d3f3b89ee3" alt="마이페이지" height="330" width="200">
+
+<img src="https://github.com/JIONDAL/HiAPT/assets/130776751/1c9f0829-a83c-4537-99e9-f245dfcc4115" alt="문의" height="330" width="200">
+
+
+
